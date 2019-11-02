@@ -1,0 +1,88 @@
+<template>
+    <view class="home">
+        <!-- 轮播图 -->
+        <swiper>
+            <swiper-item wx:for="{{swiperData}}" wx:key="index">
+                <navigator url="{{item.navigator_url}}">
+                    <image src="{{item.image_src}}"></image>
+                </navigator>
+            </swiper-item>
+        </swiper>
+
+        <!-- 分类列表 -->
+        <view class="cate_box">
+            <navigator hover-class="none" wx:for="{{cateData}}" wx:key="index" url="/pages/tabs/cates" open-type="switchTab">
+                <image src="{{item.image_src}}"></image>
+            </navigator>
+        </view>
+
+        <!-- 楼层结构 -->
+        <view class="floor_box">
+            <view class="floor_item" wx:for="{{floorData}}" wx:key="index">
+                <image class="tit" src="{{item.floor_title.image_src}}"></image>
+                <view class="img_box">
+                    <image  wx:for="{{item.product_list}}" src="{{item.image_src}}" wx:key="index"></image> 
+                </view>
+            </view>
+
+        </view>
+    </view>
+</template>
+
+<script>
+
+    import wepy from 'wepy'
+    import mixHome from "../../mixins/tabs/home"
+    export default class Home extends wepy.page {
+        mixins=[mixHome]
+       
+    }
+
+</script>
+
+<style lang='less' scoped>
+    .home {
+        swiper {
+            height: 350rpx;
+
+            navigator,
+            image {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .cate_box {
+            display: flex;
+            padding: 20px 0;
+            navigator {
+                width: 25%;
+                text-align: center;
+                image {
+                    width: 128rpx;
+                    height: 140rpx;
+                }
+            }
+        }
+        .floor_box{
+            .floor_item{
+                .tit{
+                    height: 50rpx;
+                    width: 640rpx;
+                }
+                .img_box{
+                    image{
+                    width: 90px;
+                    height: 190rpx;
+                    float: left;
+                    margin: 8rpx;
+                }
+                image:nth-child(1){
+                        height: 390rpx;
+                    }  
+                  
+                }
+            }
+        }
+    }
+</style>

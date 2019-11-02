@@ -1,0 +1,29 @@
+<template>
+    <view class="cate">
+        <navigator>
+            <image src=""></image>
+        </navigator>
+    </view>
+</template>
+
+<script>
+
+import wepy from 'wepy'
+
+export default class Cates extends wepy.page {
+    data = {
+    }
+
+    config = {
+    }
+
+    methods = {
+
+    }
+}
+
+</script>
+
+<style lang='less'>
+
+</style>
